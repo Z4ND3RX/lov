@@ -110,9 +110,20 @@
 </head>
 <body>
     <video autoplay muted loop playsinline
-    style="position: fixed; top: 0; left: 0; min-width: 100vw; min-height: 100vh; object-fit: cover; z-index: -1;">
+    style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        object-position: center;
+        z-index: -1;
+        pointer-events: none;
+    ">
     <source src="https://motionbgs.com/media/7157/floating-cat.960x540.mp4" type="video/mp4">
 </video>
+
     <div class="mouse-trail"></div>
     <div class="question">¿ Tú + Yo + Café de gatos esta semana ?</div>
     <div class="buttons-container">
