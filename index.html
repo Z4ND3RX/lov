@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Tuuu ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 100px;
+            background-color: black; 
+            cursor: none;
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 20px; 
+            background-color: white; 
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            position: relative;
+            animation: modal-animation 0.3s ease-out;
+        }
+
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        @keyframes modal-animation {
+            from { transform: translateY(-50px); opacity: 0; }
+            to   { transform: translateY(0); opacity: 1; }
+        }
+
+
+        .mouse-trail {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            font-size: 24px;
+            color: white; 
+            animation: fadeout 1s;
+        }
+
+        @keyframes fadeout {
+            to {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop playsinline
+    style="position: fixed; top: 0; left: 0; min-width: 100vw; min-height: 100vh; object-fit: cover; z-index: -1;">
+    <source src="https://motionbgs.com/media/7157/floating-cat.960x540.mp4" type="video/mp4">
+</video>
+    <div class="mouse-trail"></div>
+    <div class="question">¿ Tú + Yo + Café de gatos esta semana ?</div>
+    <div class="buttons-container">
+        <button id="yesButton" class="button" onclick="showModal()">Sí</button>
+        <button id="noButton" class="button" onclick="moveButton(event)">No</button>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Meno, it's a date ❤️❤️❤️</p>
+            <p> dime por chat cuándo puedes :3 </p>
+            <video autoplay muted loop playsinline
+    style="width: 300px; height: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);">
+    <source src="https://motionbgs.com/media/7710/curious-little-kitten.960x540.mp4" type="video/mp4">
+</video>
+
+        </div>
+    </div>
+
+    <script>
+        function moveButton(event) {
+            const button = document.getElementById('noButton');
+            button.style.position = 'absolute';
+            button.style.top = `${Math.floor(Math.random() * 80)}%`;
+            button.style.left = `${Math.floor(Math.random() * 80)}%`;
+            
+            const explosion = document.createElement('div');
+            explosion.classList.add('star');
+            explosion.innerHTML = '★';
+            explosion.style.top = `${event.clientY}px`;
+            explosion.style.left = `${event.clientX}px`;
+            document.body.appendChild(explosion);
+            
+            setTimeout(function() {
+                explosion.remove();
+            }, 1000);
+        }
+
+        function showModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            const trail = document.querySelector('.mouse-trail');
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.innerHTML = '★';
+            star.style.top = e.pageY + 'px';
+            star.style.left = e.pageX + 'px';
+            trail.appendChild(star);
+            setTimeout(function() {
+                star.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
